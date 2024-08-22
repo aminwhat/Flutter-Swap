@@ -41,7 +41,7 @@ dependencies:
 
 dependency_overrides:
   flutter_swap:
-    path: ../../packages/flutter_swap
+    path: ../../../packages/flutter_swap
 
 dev_dependencies:
   flutter_test:
