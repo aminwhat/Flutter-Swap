@@ -1,10 +1,10 @@
-import 'package:shelf/shelf_io.dart';
+import 'package:dart_frog/dart_frog.dart';
 import 'package:shelf_swap/shelf_swap.dart';
 
 Future<void> main() async {
   final server = await serve(widget((context) async {
     final request = InheritedShelf.of(context).request;
-    final name = request.url.queryParameters['name'] ?? 'World';
+    final name = request.request.url.queryParameters['name'] ?? 'World';
     return Hello(
       name: name,
     );

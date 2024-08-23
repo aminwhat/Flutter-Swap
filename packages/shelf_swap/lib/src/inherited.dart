@@ -1,4 +1,4 @@
-import 'package:shelf/shelf.dart';
+import 'package:dart_frog/dart_frog.dart';
 import 'package:swap/swap.dart';
 
 /// An [InheritedWidget] that provides the current [Request] to its descendants.
@@ -11,7 +11,7 @@ class InheritedShelf extends InheritedWidget {
     required super.child,
   });
 
-  final Request request;
+  final RequestContext request;
 
   static ShelfData of(BuildContext context) {
     final widget = context.dependOnInheritedWidgetOfExactType<InheritedShelf>();
@@ -23,5 +23,5 @@ class InheritedShelf extends InheritedWidget {
 }
 
 typedef ShelfData = ({
-  Request request,
+  RequestContext request,
 });

@@ -3,7 +3,9 @@
 /// More dartdocs go here.
 library shelf_swap;
 
-import 'package:shelf/shelf.dart';
+import 'dart:convert';
+
+import 'package:dart_frog/dart_frog.dart';
 import 'package:swap/swap.dart';
 
 import 'inherited.dart';
@@ -17,7 +19,7 @@ Handler widget(
     Future<Widget> Function(
       BuildContext context,
     ) build) {
-  return (Request request) async {
+  return (RequestContext request) async {
     try {
       final root = InheritedShelf(
         request: request,
@@ -28,7 +30,7 @@ Handler widget(
               builder: (context, result) {
                 if (result.data case final data?) return data;
                 if (result.error != null) print(result.error!);
-                throw Response(500);
+                throw Response(statusCode: 500);
               },
             );
           },
@@ -36,8 +38,9 @@ Handler widget(
       );
 
       final bytes = await encodeWidget(root);
-      return Response.ok(
-        bytes,
+      return Response(
+        statusCode: 200,
+        body: json.encode(bytes),
         headers: {
           'Content-Type': 'application/rfw',
         },

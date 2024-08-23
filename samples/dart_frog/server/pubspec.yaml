@@ -8,6 +8,12 @@ environment:
 
 dependencies:
   dart_frog: ^1.1.0
+  html_search: ^0.3.0
+
+  swap:
+    path: ../../../packages/swap
+  shelf_swap:
+    path: ../../../packages/shelf_swap
 
 dev_dependencies:
   mocktail: ^1.0.3
